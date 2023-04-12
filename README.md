@@ -8,6 +8,7 @@ It may be a demo, or prototype, if you will.
 
 | Goal | State |
 |------|-------|
+|Basic Structure|Ongoing|
 |Console Arguments Manipulation | To Do |
 |Console Container Creation | To Do |
 |Console Character Creation | To Do |
