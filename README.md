@@ -19,6 +19,8 @@ It may be a demo, or prototype, if you will.
 |Console Psedo Chemistry | To Do |
 |Maze Building | To Do |
 |Console Maze Building | To Do |
+|ASCII Graphics| To Do |
+|Console ASCII Graphics| To Do |
 |Tile Set Building | To Do |
 |Console Tile Set Building | To Do |
 |Maze Tile Set Merging | To Do |
