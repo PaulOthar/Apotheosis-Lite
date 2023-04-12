@@ -1,15 +1,18 @@
 #include <stdio.h>
-#include "statsdata.h"
+#include "manadata.h"
 
 int main(int argc,char** argv){
-    StatsData* sd = newStatsData();
-    if(sd == NULL){
+    MANA_DATA_VERBOSE = 1;
+
+    ManaData* md = newManaData();
+
+    if(md == NULL){
         return 0;
     }
-    initializeStatsData(sd);
-    sd->level[0] = 10;
-    sd->level[2] = 5;
-    printStatsData(sd);
-    freeStatsData(sd);
+
+    enableManaData(md);
+    initializeManaData(md);
+    printManaData(md);
+    freeManaData(md);
     return 0;
 }
