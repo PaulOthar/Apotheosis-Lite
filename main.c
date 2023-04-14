@@ -1,18 +1,15 @@
 #include <stdio.h>
-#include "manadata.h"
+#include "entity.h"
 
 int main(int argc,char** argv){
-    MANA_DATA_VERBOSE = 1;
+    Entity* e = newEntity();
 
-    ManaData* md = newManaData();
-
-    if(md == NULL){
+    if(e == NULL){
         return 0;
     }
-
-    enableManaData(md);
-    initializeManaData(md);
-    printManaData(md);
-    freeManaData(md);
+    enableEntity(e,1,0,2);
+    initializeEntity(e);
+    printEntity(e);
+    freeEntity(e);
     return 0;
 }
