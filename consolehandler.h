@@ -5,26 +5,36 @@
 #include <stdio.h>
 #include <string.h>
 
+/*
+required folders:
+./data
+./data/manual
 
-#define CONSOLE_HELP_FOLDER = "/help"
-#define CONSOLE_HELP_FILE_SUFIX = ".txt"
+required files:
+./data/version.txt
+./data/credits.txt
+./data/manual/index.txt
 
-#define CONSOLE_HELP_1 "-h"
-#define CONSOLE_HELP_2 "-help"
+Every folder inside manual, including manual, must have a 'index.txt'.
+
+If you so desire, you may change the name of the files and folders, on the definitions below.
+
+Treat the return code as a way to run different things
+*/
 
 int handleArgs(int argc,char *argv[]);
 
-int noArgument();
+void noArgument();
 
-int unknownArgument(char* arg);
+void unknownArgument(char* arg);
 
-int run();
+int run(char *argv);
 
-int printHelp();
+void printHelp();
 
-int printVersion();
+void printVersion();
 
-int printManual(char* arg);
+void printManual(char* arg);
 
 #define CONSOLE_HANDLER_RUN "-r"
 #define CONSOLE_HANDLER_HELP "-h"
@@ -53,53 +63,64 @@ int printManual(char* arg);
 #define CONSOLE_HANDLER_CREDITS_NOT_FOUND "\nCredits file not found :(\n\n"
 #define CONSOLE_HANDLER_MANUALS_NOT_FOUND "\nNo manual file or folder found :(\n\n"
 
-#define CONSOLE_HANDLER_RUNNING "\nRunning\n\n"
+#define CONSOLE_HANDLER_RUNNING "\nRunning (%d)\n\n"
+#define CONSOLE_HANDLER_DEFAULT_RETURN_CODE -1
 
 int handleArgs(int argc,char *argv[]){
     if(argc <= 1){
-        return noArgument();
+        noArgument();
     }
-
-    if(strcmp(argv[1],CONSOLE_HANDLER_RUN) == 0){
-        return run();
-    }
-    if(strcmp(argv[1],CONSOLE_HANDLER_HELP) == 0){
-        return printHelp();
-    }
-    if(strcmp(argv[1],CONSOLE_HANDLER_VERSION) == 0){
-        return printVersion();
-    }
-    if(strcmp(argv[1],CONSOLE_HANDLER_MANUAL) == 0){
+    else if(strcmp(argv[1],CONSOLE_HANDLER_RUN) == 0){
         if(argc <= 2){
-            return printManual(CONSOLE_HANDLER_INDEX);
+            return run("");
         }
-        return printManual(argv[2]);
+        else{
+            return run(argv[2]);
+        }
     }
-
-    return unknownArgument(argv[1]);
+    else if(strcmp(argv[1],CONSOLE_HANDLER_HELP) == 0){
+        printHelp();
+    }
+    else if(strcmp(argv[1],CONSOLE_HANDLER_VERSION) == 0){
+        printVersion();
+    }
+    else if(strcmp(argv[1],CONSOLE_HANDLER_MANUAL) == 0){
+        if(argc <= 2){
+            printManual(CONSOLE_HANDLER_INDEX);
+        }
+        else{
+            printManual(argv[2]);
+        }
+    }
+    else{
+        unknownArgument(argv[1]);
+    }
+    
+    return CONSOLE_HANDLER_DEFAULT_RETURN_CODE;
 }
 
-int noArgument(){
+void noArgument(){
     printf(CONSOLE_HANDLER_NO_ARGUMENT,CONSOLE_HANDLER_RUN,CONSOLE_HANDLER_HELP);
-    return -1;
 }
 
-int unknownArgument(char* arg){
+void unknownArgument(char* arg){
     printf(CONSOLE_HANDLER_UNKNOWN_ARGUMENT,arg,CONSOLE_HANDLER_HELP);
-    return -1;
 }
 
-int run(){
-    printf(CONSOLE_HANDLER_RUNNING);
-    return 0;
+int run(char *argv){
+    int code = 0;
+    if(strcmp(argv,"") != 0){
+        code = atoi(argv);
+    }
+    printf(CONSOLE_HANDLER_RUNNING,code);
+    return code;
 }
 
-int printHelp(){
+void printHelp(){
     printf(CONSOLE_HANDLER_HELP_RUN,CONSOLE_HANDLER_RUN);
     printf(CONSOLE_HANDLER_HELP_HELP,CONSOLE_HANDLER_HELP);
     printf(CONSOLE_HANDLER_HELP_VERSION,CONSOLE_HANDLER_VERSION);
     printf(CONSOLE_HANDLER_HELP_MANUAL,CONSOLE_HANDLER_MANUAL);
-    return 1;
 }
 
 int printFile(char* path,char* notFound){
@@ -131,7 +152,7 @@ int printFile(char* path,char* notFound){
     return status;
 }
 
-int printVersion(){
+void printVersion(){
     char pth[200];
 
     strcpy(pth,CONSOLE_HANDLER_DATA_FOLDER);
@@ -145,11 +166,9 @@ int printVersion(){
     strcat(pth,CONSOLE_HANDLER_EXTENTION);
 
     printFile(pth,CONSOLE_HANDLER_CREDITS_NOT_FOUND);
-
-    return 1;
 }
 
-int printManual(char* arg){
+void printManual(char* arg){
     char pth[200];
 
     strcpy(pth,CONSOLE_HANDLER_DATA_FOLDER);
@@ -167,8 +186,6 @@ int printManual(char* arg){
 
         printFile(pth,CONSOLE_HANDLER_MANUALS_NOT_FOUND);
     }
-
-    return 1;
 }
 
 #endif
