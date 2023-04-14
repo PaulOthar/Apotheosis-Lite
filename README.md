@@ -16,10 +16,11 @@ It may be a demo, or prototype, if you will.
 | Goal | State |
 |------|-------|
 |Basic Structure|✔️|
-|Console Arguments Manipulation |🛠️|
-|Console Container Creation |🕒|
+|Console First Instance Arguments Manipulation |✔️|
+|Console Second Instance Arguments Manipulation |🛠️|
 |Console Character Creation |🕒|
 |Console Item Creation |🕒|
+|Console Container Creation |🕒|
 |Console Manual Combat |🕒|
 |Console Crafting |🕒|
 |Console Magic Crafting |🕒|

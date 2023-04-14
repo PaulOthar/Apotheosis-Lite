@@ -1,0 +1,4 @@
+FOLDERS:
+game
+people
+system
