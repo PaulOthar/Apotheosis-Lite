@@ -17,9 +17,8 @@ It may be a demo, or prototype, if you will.
 |------|-------|
 |Basic Structure|✔️|
 |Console First Instance Arguments Manipulation |✔️|
-|Console Second Instance Arguments Manipulation |🛠️|
-|Console Character Creation |🕒|
-|Console Item Creation |🕒|
+|Console Second Instance Arguments Manipulation |✔️|
+|Console Entity Creation |🛠️|
 |Console Container Creation |🕒|
 |Console Manual Combat |🕒|
 |Console Crafting |🕒|

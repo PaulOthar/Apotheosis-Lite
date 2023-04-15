@@ -31,6 +31,17 @@ ManaData* newManaData(){
     return output;
 }
 
+void assignManaData(ManaData* md){
+    if(md != NULL){
+        return;
+    }
+    md = (ManaData*)malloc(sizeof(ManaData));
+    if(md != NULL){
+        md->level = NULL;
+        md->spent = NULL;
+    }
+}
+
 void freeManaData(ManaData* md){
     if(md->level != NULL){
         free(md->level);

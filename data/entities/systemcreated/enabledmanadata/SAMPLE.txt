@@ -1,0 +1,16 @@
+Earth Level
+Air Level
+Cold Level
+Heat Level
+Life Level
+Death Level
+Light Level
+Dark Level
+Earth Spent
+Air Spent
+Cold Spent
+Heat Spent
+Life Spent
+Death Spent
+Light Spent
+Dark Spent

@@ -1,0 +1,4 @@
+HP Reserve
+HP Limit
+Mana Reserve
+Mana Limit

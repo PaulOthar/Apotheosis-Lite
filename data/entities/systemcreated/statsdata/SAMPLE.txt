@@ -1,0 +1,8 @@
+Strength Level
+Dexterity Level
+Arcanism Level
+Resistance Level
+Strength Experience
+Dexterity Experience
+Arcanism Experience
+Resistance Experience

@@ -1,0 +1,16 @@
+Earth Reserve
+Air Reserve
+Cold Reserve
+Heat Reserve
+Life Reserve
+Death Reserve
+Light Reserve
+Dark Reserve
+Earth Limit
+Air Limit
+Cold Limit
+Heat Limit
+Life Limit
+Death Limit
+Light Limit
+Dark Limit

@@ -1,0 +1,4 @@
+ATK
+DEF
+ARC
+RES

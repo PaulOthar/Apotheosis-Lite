@@ -13,7 +13,6 @@ typedef struct /*Entity*/{
     int mana[2];//Reserve/Limit
 
     char* name;
-    char* description;
 
     StatsData* statsData;
     CombatData* combatData;
@@ -25,7 +24,6 @@ Entity* newEntity(){
 
     if(output != NULL){
         output->name = NULL;
-        output->description = NULL;
         output->statsData = NULL;
         output->combatData = NULL;
         output->manaData = NULL;
@@ -37,9 +35,6 @@ Entity* newEntity(){
 void freeEntity(Entity* e){
     if(e->name != NULL){
         free(e->name);
-    }
-    if(e->description != NULL){
-        free(e->description);
     }
     if(e->statsData != NULL){
         free(e->statsData);
@@ -95,9 +90,6 @@ void printEntity(Entity* e){
     e->hp[0],e->hp[1],
     e->mana[0],e->mana[1]
     );
-    if(e->description != NULL){
-        printf("\n%s",e->description);
-    }
     if(e->statsData != NULL){
         printf("\n--<Stats Data>--\n");
         printStatsData(e->statsData);

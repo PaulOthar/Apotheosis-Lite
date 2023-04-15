@@ -45,6 +45,13 @@ StatsData* newStatsData(){
     return output;
 }
 
+void assignStatsData(StatsData* sd){
+    if(sd != NULL){
+        return;
+    }
+    sd = (StatsData*)malloc(sizeof(StatsData));;
+}
+
 void freeStatsData(StatsData* sd){
     free(sd);
 }
