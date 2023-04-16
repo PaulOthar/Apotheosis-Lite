@@ -1,17 +1,12 @@
-#include <stdio.h>
-
-#include "consolehandler.h"
-#include "consoleEntityHandler.h"
+#include "EasyConsoleGraphics.h"
 
 int main(int argc,char** argv){
-    consoleEntityHandlerPrompt();
-    /*
-    switch(handleArgs(argc,argv)){
-        case -1:break;
-        case 0:printf("Options:\n1 - Read Entity\n2 - Create Entity");break;
-        case 1:break;
-        default:printf("Invalid Option");break;
-    }
-    */
+    EasyWall* ew = newEasyWall("-","|","+"," ");
+
+    enableEasyWallComplex1(ew,"/","\\","\\","/");
+    enableEasyWallComplex2(ew,"<",">","^","v");
+
+    printEasyWall(ew);
+    freeEasyWall(ew);
     return 0;
 }
