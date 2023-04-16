@@ -1,5 +1,5 @@
-#ifndef EASY_CONSOLE_GRAPHICS
-#define EASY_CONSOLE_GRAPHICS
+#ifndef EASY_WALL
+#define EASY_WALL
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -27,6 +27,10 @@ const int TBLR_CODE_FILTER_COMPLEX1[] = {0,3,3,3,12,5,6,15,12,9,10,15,12,15,15,1
 const int TBLR_CODE_FILTER_COMPLEX2[] = {0,3,3,3,12,15,15,7,12,15,15,11,12,13,14,15};
 const int TBLR_CODE_FILTER_COMPLETE[] = {0,3,3,3,12,5,6,7,12,9,10,11,12,13,14,15};
 
+/*
+Keep in mind that the code represents where the graphis SHOULD POINT TO
+Hence, in order to have a Top Left Corner, you must put a Bottom Right Code
+*/
 typedef struct /*EasyWall*/{
     int type;//[0:Simple][1:Complex1][2:Complex2][3:Complete]
 

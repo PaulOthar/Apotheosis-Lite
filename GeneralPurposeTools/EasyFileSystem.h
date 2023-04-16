@@ -1,11 +1,11 @@
 #ifndef EASY_FILE_SYSTEM
 #define EASY_FILE_SYSTEM
 
+#include "EasyText.h"
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-#include "EasyText.h"
 
 #define FILE_TEXT_EXTENTION ".txt"
 
@@ -19,7 +19,7 @@ EasyText* easyReadFile(char* path,int linesAmount,int lineSize){
     EasyText* output = newEasyText(linesAmount,lineSize);
 
     if(output == NULL){
-        close(fptr);
+        fclose(fptr);
         return NULL;
     }
 
@@ -28,28 +28,41 @@ EasyText* easyReadFile(char* path,int linesAmount,int lineSize){
         fgets(output->text[i],lineSize,fptr);
     }
 
-    close(fptr);
+    fclose(fptr);
 
     return output;
 }
 
-void easyWriteFile(char* path,EasyText* et){
+void easyClearFile(char* path){
+    FILE* fptr = fopen(path,"w");
+
+    if(fptr == NULL){
+        return;
+    }
+    
+    fprintf(fptr,"");
+
+    fclose(fptr);
+}
+
+void easyWriteInFile(char* path,EasyText* et){
     FILE* fptr = fopen(path,"w");
 
     if(fptr == NULL){
         return;
     }
 
-    char* bigText = toEasyBigText(et);
+    fprintf(fptr,"");
 
-    fprintf(fptr,bigText);
+    int i = 0;
+    for(i = 0;i<et->linesAmount;i++){
+        fputs(et->text[i],fptr);
+    }
 
-    free(bigText);
-
-    close(fptr);
+    fclose(fptr);
 }
 
-void easierWriteFile(char* path,char* content){
+void easierWriteOverFile(char* path,char* content){
     FILE* fptr = fopen(path,"w");
 
     if(fptr == NULL){
@@ -58,7 +71,7 @@ void easierWriteFile(char* path,char* content){
 
     fprintf(fptr,content);
 
-    close(fptr);
+    fclose(fptr);
 }
 
 #endif
