@@ -1,6 +1,6 @@
-#include "GameInteraction/entityFilePrompt.h"
+#include <stdio.h>
 
 int main(int argc,char** argv){
-    createEntityPrompt();
+    printf(":)");
     return 0;
 }
